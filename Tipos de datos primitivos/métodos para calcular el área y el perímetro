@@ -1,0 +1,255 @@
+using System;
+
+namespace FigurasGeometricas
+{
+    /// <summary>
+    /// Clase que representa un círculo y encapsula el radio como tipo primitivo
+    /// </summary>
+    public class Circulo
+    {
+        // Campo privado que encapsula el tipo de dato primitivo double
+        private double radio;
+
+        /// <summary>
+        /// Constructor que inicializa el círculo con un radio específico
+        /// </summary>
+        /// <param name="radio">Radio del círculo (debe ser mayor que 0)</param>
+        public Circulo(double radio)
+        {
+            // Validación para asegurar que el radio sea positivo
+            if (radio <= 0)
+            {
+                throw new ArgumentException("El radio debe ser mayor que cero");
+            }
+            this.radio = radio;
+        }
+
+        /// <summary>
+        /// Propiedad pública para acceder al radio (encapsulación)
+        /// Getter: permite leer el valor del radio
+        /// Setter: permite modificar el radio con validación
+        /// </summary>
+        public double Radio
+        {
+            get 
+            { 
+                return radio; 
+            }
+            set 
+            { 
+                if (value <= 0)
+                {
+                    throw new ArgumentException("El radio debe ser mayor que cero");
+                }
+                radio = value; 
+            }
+        }
+
+        /// <summary>
+        /// Método que calcula el área del círculo
+        /// Fórmula: π * r²
+        /// </summary>
+        /// <returns>Área del círculo como double</returns>
+        public double CalcularArea()
+        {
+            // Math.PI es una constante que representa el valor de π
+            // Math.Pow eleva el radio al cuadrado (radio²)
+            return Math.PI * Math.Pow(radio, 2);
+        }
+
+        /// <summary>
+        /// Método que calcula el perímetro (circunferencia) del círculo
+        /// Fórmula: 2 * π * r
+        /// </summary>
+        /// <returns>Perímetro del círculo como double</returns>
+        public double CalcularPerimetro()
+        {
+            // 2 * π * radio
+            return 2 * Math.PI * radio;
+        }
+
+        /// <summary>
+        /// Método que devuelve una representación en texto del círculo
+        /// </summary>
+        /// <returns>Cadena con información del círculo</returns>
+        public override string ToString()
+        {
+            return $"Círculo - Radio: {radio:F2}, Área: {CalcularArea():F2}, Perímetro: {CalcularPerimetro():F2}";
+        }
+    }
+
+    /// <summary>
+    /// Clase que representa un rectángulo y encapsula largo y ancho como tipos primitivos
+    /// </summary>
+    public class Rectangulo
+    {
+        // Campos privados que encapsulan los tipos de datos primitivos double
+        private double largo;
+        private double ancho;
+
+        /// <summary>
+        /// Constructor que inicializa el rectángulo con largo y ancho específicos
+        /// </summary>
+        /// <param name="largo">Largo del rectángulo (debe ser mayor que 0)</param>
+        /// <param name="ancho">Ancho del rectángulo (debe ser mayor que 0)</param>
+        public Rectangulo(double largo, double ancho)
+        {
+            // Validaciones para asegurar que las dimensiones sean positivas
+            if (largo <= 0)
+            {
+                throw new ArgumentException("El largo debe ser mayor que cero");
+            }
+            if (ancho <= 0)
+            {
+                throw new ArgumentException("El ancho debe ser mayor que cero");
+            }
+            
+            this.largo = largo;
+            this.ancho = ancho;
+        }
+
+        /// <summary>
+        /// Propiedad pública para acceder al largo (encapsulación)
+        /// </summary>
+        public double Largo
+        {
+            get 
+            { 
+                return largo; 
+            }
+            set 
+            { 
+                if (value <= 0)
+                {
+                    throw new ArgumentException("El largo debe ser mayor que cero");
+                }
+                largo = value; 
+            }
+        }
+
+        /// <summary>
+        /// Propiedad pública para acceder al ancho (encapsulación)
+        /// </summary>
+        public double Ancho
+        {
+            get 
+            { 
+                return ancho; 
+            }
+            set 
+            { 
+                if (value <= 0)
+                {
+                    throw new ArgumentException("El ancho debe ser mayor que cero");
+                }
+                ancho = value; 
+            }
+        }
+
+        /// <summary>
+        /// Método que calcula el área del rectángulo
+        /// Fórmula: largo * ancho
+        /// </summary>
+        /// <returns>Área del rectángulo como double</returns>
+        public double CalcularArea()
+        {
+            // Área = largo × ancho
+            return largo * ancho;
+        }
+
+        /// <summary>
+        /// Método que calcula el perímetro del rectángulo
+        /// Fórmula: 2 * (largo + ancho)
+        /// </summary>
+        /// <returns>Perímetro del rectángulo como double</returns>
+        public double CalcularPerimetro()
+        {
+            // Perímetro = 2 × (largo + ancho)
+            return 2 * (largo + ancho);
+        }
+
+        /// <summary>
+        /// Método que verifica si el rectángulo es un cuadrado
+        /// </summary>
+        /// <returns>True si es cuadrado, False si no</returns>
+        public bool EsCuadrado()
+        {
+            // Un rectángulo es cuadrado cuando largo = ancho
+            return Math.Abs(largo - ancho) < 0.001; // Comparación con tolerancia para doubles
+        }
+
+        /// <summary>
+        /// Método que devuelve una representación en texto del rectángulo
+        /// </summary>
+        /// <returns>Cadena con información del rectángulo</returns>
+        public override string ToString()
+        {
+            string tipo = EsCuadrado() ? "Cuadrado" : "Rectángulo";
+            return $"{tipo} - Largo: {largo:F2}, Ancho: {ancho:F2}, Área: {CalcularArea():F2}, Perímetro: {CalcularPerimetro():F2}";
+        }
+    }
+
+    /// <summary>
+    /// Clase principal para demostrar el uso de las figuras geométricas
+    /// </summary>
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("=== PROGRAMA DE FIGURAS GEOMÉTRICAS ===\n");
+
+            try
+            {
+                // Creación y uso de un círculo
+                Console.WriteLine("--- CÍRCULO ---");
+                Circulo circulo1 = new Circulo(5.0); // Radio = 5.0
+                Console.WriteLine(circulo1.ToString());
+                
+                // Modificar el radio usando la propiedad
+                circulo1.Radio = 3.5;
+                Console.WriteLine($"Después de cambiar el radio a 3.5:");
+                Console.WriteLine(circulo1.ToString());
+
+                Console.WriteLine();
+
+                // Creación y uso de un rectángulo
+                Console.WriteLine("--- RECTÁNGULO ---");
+                Rectangulo rectangulo1 = new Rectangulo(8.0, 4.0); // Largo = 8.0, Ancho = 4.0
+                Console.WriteLine(rectangulo1.ToString());
+
+                // Modificar las dimensiones
+                rectangulo1.Largo = 6.0;
+                rectangulo1.Ancho = 6.0; // Ahora será un cuadrado
+                Console.WriteLine($"Después de cambiar las dimensiones a 6.0 x 6.0:");
+                Console.WriteLine(rectangulo1.ToString());
+
+                Console.WriteLine();
+
+                // Crear otro rectángulo para comparar
+                Console.WriteLine("--- OTRO RECTÁNGULO ---");
+                Rectangulo rectangulo2 = new Rectangulo(10.5, 2.3);
+                Console.WriteLine(rectangulo2.ToString());
+
+                // Mostrar cálculos individuales
+                Console.WriteLine($"\nCálculos individuales del último rectángulo:");
+                Console.WriteLine($"Área: {rectangulo2.CalcularArea():F2}");
+                Console.WriteLine($"Perímetro: {rectangulo2.CalcularPerimetro():F2}");
+                Console.WriteLine($"¿Es cuadrado?: {rectangulo2.EsCuadrado()}");
+
+            }
+            catch (ArgumentException ex)
+            {
+                // Manejo de errores si se ingresan valores inválidos
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error inesperado: {ex.Message}");
+            }
+
+            // Pausar para ver los resultados
+            Console.WriteLine("\nPresiona cualquier tecla para salir...");
+            Console.ReadKey();
+        }
+    }
+}
