@@ -13,3 +13,6 @@ namespace RegistroEstudiantes
 // Mensaje de bienvenida
             Console.WriteLine("=== SISTEMA DE REGISTRO DE ESTUDIANTES ===");
             Console.WriteLine();
+            // Solicitar y leer el ID del estudiante
+            Console.Write("Ingrese el ID del estudiante: ");
+            id = int.Parse(Console.ReadLine());
