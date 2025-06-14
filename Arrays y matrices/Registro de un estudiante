@@ -32,4 +32,22 @@ class Programa
         {
             System.Console.Write($"Teléfono {i + 1}: ");
             telefonos[i] = System.Console.ReadLine();
+
         }
+        // Mostramos toda la información que ingresó el usuario
+        System.Console.WriteLine("\n=== DATOS DEL ESTUDIANTE ===");
+        System.Console.WriteLine($"ID: {id}");
+        System.Console.WriteLine($"Nombres: {nombres}");
+        System.Console.WriteLine($"Apellidos: {apellidos}");
+        System.Console.WriteLine($"Dirección: {direccion}");
+        System.Console.WriteLine("Teléfonos:");
+        for (int i = 0; i < telefonos.Length; i++)
+        {
+            System.Console.WriteLine($"  Teléfono {i + 1}: {telefonos[i]}");
+        }
+
+        // Esperamos que el usuario presione una tecla para terminar
+        System.Console.WriteLine("\nPresione cualquier tecla para salir...");
+        System.Console.ReadKey();
+    }
+}
