@@ -13,3 +13,15 @@ class Programa
         // Pedimos el ID del estudiante
         System.Console.Write("Ingrese el ID del estudiante: ");
         id = System.Convert.ToInt32(System.Console.ReadLine());
+
+        // Pedimos los nombres
+        System.Console.Write("Ingrese los nombres: ");
+        nombres = System.Console.ReadLine();
+
+        // Pedimos los apellidos
+        System.Console.Write("Ingrese los apellidos: ");
+        apellidos = System.Console.ReadLine();
+
+        // Pedimos la dirección
+        System.Console.Write("Ingrese la dirección: ");
+        direccion = System.Console.ReadLine();
