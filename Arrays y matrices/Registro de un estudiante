@@ -1,18 +1,15 @@
-using System;
-
-namespace RegistroEstudiantes
+class Programa
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            // Declaramos las variables para almacenar los datos del estudiante
-            int id;
-            string nombres, apellidos, direccion;
-            string[] telefonos = new string[3]; // Array para almacenar 3 teléfonos
-// Mensaje de bienvenida
-            Console.WriteLine("=== SISTEMA DE REGISTRO DE ESTUDIANTES ===");
-            Console.WriteLine();
-            // Solicitar y leer el ID del estudiante
-            Console.Write("Ingrese el ID del estudiante: ");
-            id = int.Parse(Console.ReadLine());
+        // Variables para guardar los datos del alumno
+        int id;
+        string nombres, apellidos, direccion;
+        string[] telefonos = new string[3]; // Tres números de teléfono
+
+        // Mensaje inicial para el usuario
+        System.Console.WriteLine("=== REGISTRO DE ESTUDIANTES ===\n");
+
+        // Pedimos el ID del estudiante
+        System.Console.Write("Ingrese el ID del estudiante: ");
+        id = System.Convert.ToInt32(System.Console.ReadLine());
