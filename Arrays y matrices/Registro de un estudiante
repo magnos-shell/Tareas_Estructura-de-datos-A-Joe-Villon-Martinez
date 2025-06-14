@@ -25,3 +25,11 @@ class Programa
         // Pedimos la dirección
         System.Console.Write("Ingrese la dirección: ");
         direccion = System.Console.ReadLine();
+
+        // Solicitamos los teléfonos uno por uno
+        System.Console.WriteLine("\nIngrese los teléfonos del estudiante:");
+        for (int i = 0; i < telefonos.Length; i++)
+        {
+            System.Console.Write($"Teléfono {i + 1}: ");
+            telefonos[i] = System.Console.ReadLine();
+        }
