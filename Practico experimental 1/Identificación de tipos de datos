@@ -1,0 +1,23 @@
+public struct Paciente
+{
+    public string Nombre;
+    public string DNI;
+    public string Telefono;
+}
+
+public struct Doctor
+{
+    public string Nombre;
+    public string Especialidad;
+}
+
+public struct Turno
+{
+    public Paciente paciente;
+    public Doctor doctor;
+    public System.DateTime fecha;
+    public string hora;
+    public string estado;
+}
+
+public class AgendaTurnos
