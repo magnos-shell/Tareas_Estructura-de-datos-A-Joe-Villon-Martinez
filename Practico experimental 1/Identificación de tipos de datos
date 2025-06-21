@@ -42,3 +42,24 @@ public class AgendaTurnos
                 fecha = fecha,
                 hora = hora,
                 estado = "Reservado"
+                 };
+            contador++;
+            return true;
+        }
+        else
+        {
+            System.Console.WriteLine("No hay capacidad para más turnos");
+            return false;
+        }
+    }
+
+    public void MostrarTurnos()
+    {
+        if (contador == 0)
+        {
+            System.Console.WriteLine("No hay turnos agendados.");
+            return;
+        }
+        System.Console.WriteLine("LISTADO DE TURNOS:");
+        for (int i = 0; i < contador; i++)
+        {
