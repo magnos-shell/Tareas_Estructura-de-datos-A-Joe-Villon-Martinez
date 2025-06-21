@@ -21,3 +21,24 @@ public struct Turno
 }
 
 public class AgendaTurnos
+{
+    private Turno[] turnos;
+    private int contador;
+
+    public AgendaTurnos(int capacidad)
+    {
+        turnos = new Turno[capacidad];
+        contador = 0;
+    }
+
+    public bool AgregarTurno(Paciente p, Doctor d, System.DateTime fecha, string hora)
+    {
+        if (contador < turnos.Length)
+        {
+            turnos[contador] = new Turno
+            {
+                paciente = p,
+                doctor = d,
+                fecha = fecha,
+                hora = hora,
+                estado = "Reservado"
