@@ -108,3 +108,33 @@ public class Program
                 Nombre = nombreDoctor,
                 Especialidad = especialidadDoctor
             };
+ System.Console.WriteLine("\nIngrese la fecha del turno (formato: dd/MM/yyyy):");
+            string fechaStr = System.Console.ReadLine();
+            System.DateTime fechaTurno;
+            while (!System.DateTime.TryParseExact(fechaStr, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out fechaTurno))
+            {
+                System.Console.WriteLine("Fecha inválida. Ingrese la fecha en formato dd/MM/yyyy:");
+                fechaStr = System.Console.ReadLine();
+            }
+
+            System.Console.Write("Ingrese la hora del turno (ejemplo: 10:00): ");
+            string horaTurno = System.Console.ReadLine();
+
+            bool agregado = agenda.AgregarTurno(paciente, doctor, fechaTurno, horaTurno);
+            if (agregado)
+            {
+                System.Console.WriteLine("\nTurno agendado con éxito.");
+            }
+
+            System.Console.WriteLine("\n¿Desea agendar otro turno? (s/n): ");
+            string respuesta = System.Console.ReadLine().ToLower();
+            if (respuesta != "s") break;
+        }
+
+        System.Console.WriteLine("\nTurnos agendados:");
+        agenda.MostrarTurnos();
+
+        System.Console.WriteLine("\nGracias por usar el sistema. Presione cualquier tecla para salir.");
+        System.Console.ReadKey();
+    }
+}
