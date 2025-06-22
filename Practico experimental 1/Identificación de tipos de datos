@@ -42,7 +42,7 @@ public class AgendaTurnos
                 fecha = fecha,
                 hora = hora,
                 estado = "Reservado"
-                 };
+            };
             contador++;
             return true;
         }
@@ -63,7 +63,7 @@ public class AgendaTurnos
         System.Console.WriteLine("LISTADO DE TURNOS:");
         for (int i = 0; i < contador; i++)
         {
- System.Console.WriteLine($"{i + 1}. Paciente: {turnos[i].paciente.Nombre}, DNI: {turnos[i].paciente.DNI}, Tel: {turnos[i].paciente.Telefono}");
+            System.Console.WriteLine($"{i + 1}. Paciente: {turnos[i].paciente.Nombre}, DNI: {turnos[i].paciente.DNI}, Tel: {turnos[i].paciente.Telefono}");
             System.Console.WriteLine($"   Doctor: {turnos[i].doctor.Nombre} ({turnos[i].doctor.Especialidad})");
             System.Console.WriteLine($"   Fecha y Hora: {turnos[i].fecha:dd/MM/yyyy} {turnos[i].hora}");
             System.Console.WriteLine($"   Estado: {turnos[i].estado}");
@@ -108,7 +108,8 @@ public class Program
                 Nombre = nombreDoctor,
                 Especialidad = especialidadDoctor
             };
- System.Console.WriteLine("\nIngrese la fecha del turno (formato: dd/MM/yyyy):");
+
+            System.Console.WriteLine("\nIngrese la fecha del turno (formato: dd/MM/yyyy):");
             string fechaStr = System.Console.ReadLine();
             System.DateTime fechaTurno;
             while (!System.DateTime.TryParseExact(fechaStr, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out fechaTurno))
