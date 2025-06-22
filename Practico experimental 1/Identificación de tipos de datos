@@ -63,3 +63,48 @@ public class AgendaTurnos
         System.Console.WriteLine("LISTADO DE TURNOS:");
         for (int i = 0; i < contador; i++)
         {
+ System.Console.WriteLine($"{i + 1}. Paciente: {turnos[i].paciente.Nombre}, DNI: {turnos[i].paciente.DNI}, Tel: {turnos[i].paciente.Telefono}");
+            System.Console.WriteLine($"   Doctor: {turnos[i].doctor.Nombre} ({turnos[i].doctor.Especialidad})");
+            System.Console.WriteLine($"   Fecha y Hora: {turnos[i].fecha:dd/MM/yyyy} {turnos[i].hora}");
+            System.Console.WriteLine($"   Estado: {turnos[i].estado}");
+            System.Console.WriteLine("---------------------------------------------");
+        }
+    }
+}
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        AgendaTurnos agenda = new AgendaTurnos(50);
+
+        System.Console.WriteLine("Bienvenido al sistema de agendamiento de turnos de la clínica.");
+
+        while (true)
+        {
+            System.Console.WriteLine("\nIngrese los datos del paciente:");
+            System.Console.Write("Nombre: ");
+            string nombrePaciente = System.Console.ReadLine();
+            System.Console.Write("DNI: ");
+            string dniPaciente = System.Console.ReadLine();
+            System.Console.Write("Teléfono: ");
+            string telefonoPaciente = System.Console.ReadLine();
+
+            Paciente paciente = new Paciente
+            {
+                Nombre = nombrePaciente,
+                DNI = dniPaciente,
+                Telefono = telefonoPaciente
+            };
+
+            System.Console.WriteLine("\nIngrese los datos del doctor:");
+            System.Console.Write("Nombre: ");
+            string nombreDoctor = System.Console.ReadLine();
+            System.Console.Write("Especialidad: ");
+            string especialidadDoctor = System.Console.ReadLine();
+
+            Doctor doctor = new Doctor
+            {
+                Nombre = nombreDoctor,
+                Especialidad = especialidadDoctor
+            };
