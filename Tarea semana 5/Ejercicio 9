@@ -1,0 +1,52 @@
+// Escribir un programa que pida al usuario una palabra 
+// y muestre por pantalla el número de veces que contiene cada vocal.
+
+// Creamos un alias llamado MiSistema para el espacio de nombres System
+using MiSistema = System;
+
+class ContadorVocales
+{
+    static void Main()
+    {
+        // Pedimos al usuario que ingrese una palabra
+        MiSistema.Console.WriteLine("Ingrese una palabra:");
+
+        // Leemos la palabra ingresada y la convertimos a minúsculas para facilitar el conteo
+        string palabra = MiSistema.Console.ReadLine().ToLower();
+
+        // Inicializamos los contadores para cada vocal
+        int contadorA = 0, contadorE = 0, contadorI = 0, contadorO = 0, contadorU = 0;
+
+        // Recorremos cada letra de la palabra ingresada
+        foreach (char letra in palabra)
+        {
+            // Usamos un switch para identificar y contar cada vocal
+            switch (letra)
+            {
+                case 'a':
+                    contadorA++;
+                    break;
+                case 'e':
+                    contadorE++;
+                    break;
+                case 'i':
+                    contadorI++;
+                    break;
+                case 'o':
+                    contadorO++;
+                    break;
+                case 'u':
+                    contadorU++;
+                    break;
+            }
+        }
+
+        // Mostramos en pantalla la cantidad de veces que aparece cada vocal
+        MiSistema.Console.WriteLine("Cantidad de cada vocal en la palabra:");
+        MiSistema.Console.WriteLine($"a: {contadorA}");
+        MiSistema.Console.WriteLine($"e: {contadorE}");
+        MiSistema.Console.WriteLine($"i: {contadorI}");
+        MiSistema.Console.WriteLine($"o: {contadorO}");
+        MiSistema.Console.WriteLine($"u: {contadorU}");
+    }
+}
