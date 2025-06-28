@@ -1,0 +1,49 @@
+// Escribir un programa que almacene las asignaturas de un curso (por ejemplo Matemáticas, Física, Química, Historia y Lengua) 
+// en una lista, pregunte al usuario la nota que ha sacado en cada asignatura, y después las muestre por pantalla con el mensaje 
+// En <asignatura> has sacado <nota> donde <asignatura> es cada una de las asignaturas de la lista y <nota> cada una de las 
+// correspondientes notas introducidas por el usuario.
+
+using Basicos = System;
+using Colecciones = System.Collections.Generic;
+
+class ProgramaNotas
+{
+    static void Main()
+    {
+        // Lista con las asignaturas del curso
+        Colecciones.List<string> asignaturas = new Colecciones.List<string> { "Matemáticas", "Física", "Química", "Historia", "Lengua" };
+
+        // Lista para guardar las notas correspondientes a cada asignatura
+        Colecciones.List<double> notas = new Colecciones.List<double>();
+
+        // Pedimos al usuario que introduzca la nota para cada asignatura
+        foreach (string asignatura in asignaturas)
+        {
+            double nota;
+            while (true)
+            {
+                Basicos.Console.Write($"Introduce la nota que has sacado en {asignatura}: ");
+                string entrada = Basicos.Console.ReadLine();
+
+                // Validamos que la nota sea un número válido y esté en un rango razonable (0 a 10)
+                if (double.TryParse(entrada, out nota) && nota >= 0 && nota <= 10)
+                {
+                    notas.Add(nota);
+                    break;
+                }
+                else
+                {
+                    Basicos.Console.WriteLine("Por favor, introduce una nota válida entre 0 y 10.");
+                }
+            }
+        }
+
+        Basicos.Console.WriteLine();
+
+        // Mostramos las asignaturas con sus notas
+        for (int i = 0; i < asignaturas.Count; i++)
+        {
+            Basicos.Console.WriteLine($"En {asignaturas[i]} has sacado {notas[i]}");
+        }
+    }
+}
