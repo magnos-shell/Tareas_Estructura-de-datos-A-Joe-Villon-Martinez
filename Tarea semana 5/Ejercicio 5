@@ -1,0 +1,26 @@
+// Escribir un programa que almacene en una lista los números del 1 al 10 
+// y los muestre por pantalla en orden inverso separados por comas.
+
+using Basico = System;
+using Listas = System.Collections.Generic;
+
+class MostrarNumerosInverso
+{
+    static void Main()
+    {
+        // Creamos una lista para almacenar los números del 1 al 10
+        Listas.List<int> numeros = new Listas.List<int>();
+
+        // Agregamos los números del 1 al 10 a la lista usando un ciclo for
+        for (int i = 1; i <= 10; i++)
+        {
+            numeros.Add(i);
+        }
+
+        // Invertimos el orden de los números en la lista
+        numeros.Reverse();
+
+        // Mostramos los números en orden inverso, separados por comas
+        Basico.Console.WriteLine(Basico.String.Join(", ", numeros));
+    }
+}
