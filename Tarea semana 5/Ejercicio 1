@@ -1,0 +1,30 @@
+// Escribir un programa que almacene las asignaturas de un curso (por ejemplo Matemáticas, Física, Química, Historia y Lengua) 
+// en una lista y la muestre por pantalla.
+
+using Principal = System;
+using ListasGenericas = System.Collections.Generic;
+
+class ProgramaAsignaturas
+{
+    static void Main()
+    {
+        // Creamos una lista con las asignaturas del curso
+        ListasGenericas.List<string> asignaturas = new ListasGenericas.List<string> 
+        { 
+            "Matemáticas", 
+            "Física", 
+            "Química", 
+            "Historia", 
+            "Lengua" 
+        };
+
+        // Mostramos por pantalla las asignaturas almacenadas en la lista
+        Principal.Console.WriteLine("Las asignaturas del curso son:");
+
+        // Recorremos la lista y mostramos cada asignatura en una línea
+        foreach (string asignatura in asignaturas)
+        {
+            Principal.Console.WriteLine(asignatura);
+        }
+    }
+}
