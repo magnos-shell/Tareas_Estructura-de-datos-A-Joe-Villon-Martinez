@@ -1,0 +1,45 @@
+// Escribir un programa que almacene los vectores (1,2,3) y (-1,0,2) en dos listas y muestre por pantalla su producto escalar
+using System;
+
+class CalculadorProductoPunto
+{
+    static void Main()
+    {
+        // Los vectores que vamos a analizar
+        int[] direccionA = { 1, 2, 3 };    // Primera dirección en espacio 3D
+        int[] direccionB = { -1, 0, 2 };   // Segunda dirección a comparar
+        
+        // Asegurarnos que podemos compararlos
+        if (direccionA.Length != direccionB.Length)
+        {
+            Console.WriteLine("Error: Necesitamos vectores del mismo tamaño");
+            return;
+        }
+        
+        // Acumulador para el cálculo
+        int sumaDeMultiplicaciones = 0;
+        
+        // Recorremos cada componente
+        for (int posicion = 0; posicion < direccionA.Length; posicion++)
+        {
+            // Multiplicamos componente por componente y sumamos
+            sumaDeMultiplicaciones += direccionA[posicion] * direccionB[posicion];
+        }
+        
+        // Mostramos el análisis
+        Console.WriteLine("Análisis de vectores:");
+        Console.WriteLine($"Vector A → ({string.Join(", ", direccionA)})");
+        Console.WriteLine($"Vector B → ({string.Join(", ", direccionB)})");
+        Console.WriteLine($"\nProducto punto calculado: {sumaDeMultiplicaciones}");
+        
+        // Explicación paso a paso
+        Console.WriteLine("\nDesarrollo matemático:");
+        Console.WriteLine($"({direccionA[0]} × {direccionB[0]}) + " +
+                         $"({direccionA[1]} × {direccionB[1]}) + " +
+                         $"({direccionA[2]} × {direccionB[2]})");
+        Console.WriteLine($"= {direccionA[0] * direccionB[0]} + " +
+                         $"{direccionA[1] * direccionB[1]} + " +
+                         $"{direccionA[2] * direccionB[2]}");
+        Console.WriteLine($"= {sumaDeMultiplicaciones}");
+    }
+}
