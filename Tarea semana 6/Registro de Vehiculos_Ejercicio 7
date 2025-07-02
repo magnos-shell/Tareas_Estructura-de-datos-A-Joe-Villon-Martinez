@@ -23,3 +23,18 @@ namespace SistemaParqueadero.Modelos
             this.Año = año;
             this.Precio = precio;
         }
+// Para mostrar los datos del carro cuando se necesite
+        public override string ToString()
+        {
+            return $"Placa: {Placa} | Marca: {Marca} | Modelo: {Modelo} | Año: {Año} | Precio: ${Precio:N2}";
+        }
+    }
+
+    // Este es un nodo de la lista, cada uno tiene un carro
+    public class NodoVehiculo
+    {
+        public Vehiculo Vehiculo { get; set; }
+        public NodoVehiculo Siguiente { get; set; }
+
+        public NodoVehiculo(Vehiculo vehiculo)
+        {

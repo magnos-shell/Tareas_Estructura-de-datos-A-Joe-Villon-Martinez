@@ -23,3 +23,16 @@ class Estudiante
     // Es el enlace que conecta los nodos.
     public Estudiante Siguiente { get; set; }
 }
+// Define la clase ListaEnlazada, que gestiona la colección de objetos Estudiante.
+// Implementa operaciones básicas de una lista enlazada simple.
+class ListaEnlazada
+{
+    // Campo privado que apunta al primer estudiante de la lista.
+    // Si la lista está vacía, 'cabeza' será null.
+    private Estudiante cabeza;
+
+    // Método para agregar un nuevo estudiante a la lista.
+    // Los estudiantes con nota >= 7 se agregan al principio (cabeza) de la lista.
+    // Los estudiantes con nota < 7 se agregan al final de la lista.
+    public void AgregarEstudiante(Estudiante nuevo)
+    {
