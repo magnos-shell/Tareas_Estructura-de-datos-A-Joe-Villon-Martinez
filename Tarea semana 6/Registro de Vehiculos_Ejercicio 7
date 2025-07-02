@@ -37,4 +37,8 @@ namespace SistemaParqueadero.Modelos
         public NodoVehiculo Siguiente { get; set; }
 
         public NodoVehiculo(Vehiculo vehiculo)
-        {
+        { this.Vehiculo = vehiculo;
+            this.Siguiente = null;
+        }
+    }
+
