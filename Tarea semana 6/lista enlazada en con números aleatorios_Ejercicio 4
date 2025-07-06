@@ -1,0 +1,154 @@
+// Definición del nodo de la lista enlazada
+public class Nodo
+{
+    public int Valor { get; set; }
+    public Nodo Siguiente { get; set; }
+    
+    public Nodo(int valor)
+    {
+        Valor = valor;
+        Siguiente = null;
+    }
+}
+
+// Clase para manejar la lista enlazada
+public class ListaEnlazada
+{
+    private Nodo cabeza;
+    
+    public ListaEnlazada()
+    {
+        cabeza = null;
+    }
+    
+    // Método para agregar un nodo al final de la lista
+    public void Agregar(int valor)
+    {
+        Nodo nuevoNodo = new Nodo(valor);
+        
+        if (cabeza == null)
+        {
+            cabeza = nuevoNodo;
+        }
+        else
+        {
+            Nodo actual = cabeza;
+            while (actual.Siguiente != null)
+            {
+                actual = actual.Siguiente;
+            }
+            actual.Siguiente = nuevoNodo;
+        }
+    }
+    
+    // Método para generar 50 números aleatorios del 1 al 999
+    public void GenerarNumerosAleatorios()
+    {
+        System.Random random = new System.Random();
+        
+        for (int i = 0; i < 50; i++)
+        {
+            int numeroAleatorio = random.Next(1, 1000); // 1 a 999
+            Agregar(numeroAleatorio);
+        }
+    }
+    
+    // Método para eliminar nodos fuera del rango especificado
+    public void EliminarFueraDeRango(int minimo, int maximo)
+    {
+        // Eliminar nodos al inicio que estén fuera del rango
+        while (cabeza != null && (cabeza.Valor < minimo || cabeza.Valor > maximo))
+        {
+            cabeza = cabeza.Siguiente;
+        }
+        
+        // Si la lista quedó vacía, salir
+        if (cabeza == null)
+            return;
+        
+        // Eliminar nodos del resto de la lista
+        Nodo actual = cabeza;
+        while (actual.Siguiente != null)
+        {
+            if (actual.Siguiente.Valor < minimo || actual.Siguiente.Valor > maximo)
+            {
+                actual.Siguiente = actual.Siguiente.Siguiente;
+            }
+            else
+            {
+                actual = actual.Siguiente;
+            }
+        }
+    }
+    
+    // Método para mostrar la lista
+    public void MostrarLista()
+    {
+        if (cabeza == null)
+        {
+            System.Console.WriteLine("La lista está vacía.");
+            return;
+        }
+        
+        Nodo actual = cabeza;
+        System.Console.Write("Lista: ");
+        while (actual != null)
+        {
+            System.Console.Write(actual.Valor);
+            if (actual.Siguiente != null)
+                System.Console.Write(" -> ");
+            actual = actual.Siguiente;
+        }
+        System.Console.WriteLine();
+    }
+    
+    // Método para contar elementos en la lista
+    public int ContarElementos()
+    {
+        int contador = 0;
+        Nodo actual = cabeza;
+        while (actual != null)
+        {
+            contador++;
+            actual = actual.Siguiente;
+        }
+        return contador;
+    }
+}
+
+// Programa principal
+class Program
+{
+    static void Main(string[] args)
+    {
+        ListaEnlazada lista = new ListaEnlazada();
+        
+        // Generar 50 números aleatorios del 1 al 999
+        System.Console.WriteLine("Generando 50 números aleatorios del 1 al 999...");
+        lista.GenerarNumerosAleatorios();
+        
+        // Mostrar lista original
+        System.Console.WriteLine("\nLista original:");
+        lista.MostrarLista();
+        System.Console.WriteLine($"Cantidad de elementos: {lista.ContarElementos()}");
+        
+        // Solicitar rango al usuario
+        System.Console.WriteLine("\nIngrese el rango de valores a mantener:");
+        System.Console.Write("Valor mínimo: ");
+        int minimo = int.Parse(System.Console.ReadLine());
+        
+        System.Console.Write("Valor máximo: ");
+        int maximo = int.Parse(System.Console.ReadLine());
+        
+        // Eliminar elementos fuera del rango
+        lista.EliminarFueraDeRango(minimo, maximo);
+        
+        // Mostrar lista filtrada
+        System.Console.WriteLine($"\nLista después de eliminar valores fuera del rango [{minimo}, {maximo}]:");
+        lista.MostrarLista();
+        System.Console.WriteLine($"Cantidad de elementos: {lista.ContarElementos()}");
+        
+        System.Console.WriteLine("\nPresione cualquier tecla para salir...");
+        System.Console.ReadKey();
+    }
+}

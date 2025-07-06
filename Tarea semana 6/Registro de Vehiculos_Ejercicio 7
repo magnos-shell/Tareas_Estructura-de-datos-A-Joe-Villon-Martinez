@@ -1,0 +1,249 @@
+// Define la estructura de un vehículo.
+public class Vehicle
+{
+    // Propiedades del vehículo.
+    public string LicensePlate { get; set; }
+    public string Brand { get; set; }
+    public string Model { get; set; }
+    public int Year { get; set; }
+    public decimal Price { get; set; }
+    public Vehicle Next { get; set; } // Puntero al siguiente vehículo en la lista.
+
+    // Constructor para inicializar un nuevo vehículo.
+    public Vehicle(string licensePlate, string brand, string model, int year, decimal price)
+    {
+        LicensePlate = licensePlate;
+        Brand = brand;
+        Model = model;
+        Year = year;
+        Price = price;
+        Next = null;
+    }
+
+    // Muestra los detalles del vehículo en la consola.
+    public void DisplayVehicle()
+    {
+        System.Console.WriteLine($"  Placa: {LicensePlate}\n  Marca: {Brand}\n  Modelo: {Model}\n  Año: {Year}\n  Precio: ${Price:N2}\n--------------------");
+    }
+}
+
+// Gestiona una colección de vehículos usando una lista enlazada.
+public class VehicleLinkedList
+{
+    private Vehicle head; // La cabeza de la lista enlazada.
+
+    // Constructor que inicializa una lista vacía.
+    public VehicleLinkedList()
+    {
+        head = null;
+    }
+
+    // Agrega un nuevo vehículo al final de la lista.
+    public void AddVehicle(Vehicle newVehicle)
+    {
+        if (head == null)
+        {
+            head = newVehicle;
+        }
+        else
+        {
+            Vehicle current = head;
+            while (current.Next != null)
+            {
+                current = current.Next;
+            }
+            current.Next = newVehicle;
+        }
+        System.Console.WriteLine("\nVehículo agregado exitosamente.");
+    }
+
+    // Busca un vehículo por su número de placa.
+    public Vehicle SearchVehicleByLicensePlate(string licensePlate)
+    {
+        Vehicle current = head;
+        // Recorre la lista hasta encontrar la placa o llegar al final.
+        while (current != null && !current.LicensePlate.Equals(licensePlate, System.StringComparison.OrdinalIgnoreCase))
+        {
+            current = current.Next;
+        }
+        return current; // Retorna el vehículo encontrado o null.
+    }
+
+    // Muestra todos los vehículos registrados para un año específico.
+    public void ViewVehiclesByYear(int year)
+    {
+        System.Console.WriteLine($"\n--- Vehículos del año {year} ---");
+        bool found = false;
+        Vehicle current = head;
+        while (current != null)
+        {
+            if (current.Year == year)
+            {
+                current.DisplayVehicle();
+                found = true;
+            }
+            current = current.Next;
+        }
+        if (!found)
+        {
+            System.Console.WriteLine($"No se encontraron vehículos del año {year}.");
+        }
+    }
+
+    // Muestra todos los vehículos en la lista.
+    public void ViewAllVehicles()
+    {
+        System.Console.WriteLine("\n--- Todos los Vehículos Registrados ---");
+        if (head == null)
+        {
+            System.Console.WriteLine("No hay vehículos registrados.");
+            return;
+        }
+        Vehicle current = head;
+        while (current != null)
+        {
+            current.DisplayVehicle();
+            current = current.Next;
+        }
+    }
+
+    // Elimina un vehículo de la lista por su número de placa.
+    public void DeleteVehicle(string licensePlate)
+    {
+        if (head == null)
+        {
+            System.Console.WriteLine("La lista de vehículos está vacía. No se puede eliminar.");
+            return;
+        }
+
+        // Caso especial: eliminar el primer vehículo (head).
+        if (head.LicensePlate.Equals(licensePlate, System.StringComparison.OrdinalIgnoreCase))
+        {
+            head = head.Next;
+            System.Console.WriteLine($"\nVehículo con placa '{licensePlate}' eliminado exitosamente.");
+            return;
+        }
+
+        // Busca el vehículo a eliminar (el nodo anterior a él).
+        Vehicle current = head;
+        while (current.Next != null && !current.Next.LicensePlate.Equals(licensePlate, System.StringComparison.OrdinalIgnoreCase))
+        {
+            current = current.Next;
+        }
+
+        // Si se encuentra el vehículo, lo elimina.
+        if (current.Next != null)
+        {
+            current.Next = current.Next.Next;
+            System.Console.WriteLine($"\nVehículo con placa '{licensePlate}' eliminado exitosamente.");
+        }
+        else
+        {
+            System.Console.WriteLine($"\nNo se encontró ningún vehículo con placa '{licensePlate}'.");
+        }
+    }
+}
+
+// Clase principal del programa que contiene la lógica de interacción con el usuario.
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        VehicleLinkedList parkingLot = new VehicleLinkedList();
+        bool exit = false;
+
+        // Bucle principal del menú.
+        while (!exit)
+        {
+            System.Console.WriteLine("\n--- Menú de Gestión de Estacionamiento ---\n1. Agregar vehículo\n2. Buscar vehículo por placa\n3. Ver vehículos por año\n4. Ver todos los vehículos registrados\n5. Eliminar vehículo por placa\n6. Salir");
+            System.Console.Write("Seleccione una opción: ");
+            string choice = System.Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    // Obtiene los detalles del vehículo y lo agrega.
+                    Vehicle newVehicle = GetVehicleDetails();
+                    parkingLot.AddVehicle(newVehicle);
+                    break;
+                case "2":
+                    System.Console.Write("Ingrese la placa del vehículo a buscar: ");
+                    string searchPlaca = System.Console.ReadLine();
+                    Vehicle foundVehicle = parkingLot.SearchVehicleByLicensePlate(searchPlaca);
+                    if (foundVehicle != null)
+                    {
+                        System.Console.WriteLine("\n--- Vehículo Encontrado ---");
+                        foundVehicle.DisplayVehicle();
+                    }
+                    else
+                    {
+                        System.Console.WriteLine($"\nNo se encontró ningún vehículo con placa '{searchPlaca}'.");
+                    }
+                    break;
+                case "3":
+                    // Solicita el año y muestra los vehículos correspondientes.
+                    int searchYear = GetIntInput("Ingrese el año para buscar vehículos: ");
+                    parkingLot.ViewVehiclesByYear(searchYear);
+                    break;
+                case "4":
+                    // Muestra todos los vehículos registrados.
+                    parkingLot.ViewAllVehicles();
+                    break;
+                case "5":
+                    System.Console.Write("Ingrese la placa del vehículo a eliminar: ");
+                    string deletePlaca = System.Console.ReadLine();
+                    parkingLot.DeleteVehicle(deletePlaca);
+                    break;
+                case "6":
+                    exit = true;
+                    System.Console.WriteLine("Saliendo del programa. ¡Hasta luego!");
+                    break;
+                default:
+                    System.Console.WriteLine("Opción inválida. Por favor, intente de nuevo.");
+                    break;
+            }
+        }
+    }
+
+    // Método auxiliar para obtener una entrada entera válida del usuario.
+    private static int GetIntInput(string prompt)
+    {
+        int result;
+        System.Console.Write(prompt);
+        while (!System.Int32.TryParse(System.Console.ReadLine(), out result))
+        {
+            System.Console.WriteLine("Entrada inválida. Por favor, ingrese un número.");
+            System.Console.Write(prompt);
+        }
+        return result;
+    }
+
+    // Método auxiliar para obtener una entrada decimal válida del usuario.
+    private static decimal GetDecimalInput(string prompt)
+    {
+        decimal result;
+        System.Console.Write(prompt);
+        while (!System.Decimal.TryParse(System.Console.ReadLine(), out result))
+        {
+            System.Console.WriteLine("Entrada inválida. Por favor, ingrese un número.");
+            System.Console.Write(prompt);
+        }
+        return result;
+    }
+
+    // Método auxiliar para recopilar todos los detalles de un nuevo vehículo.
+    private static Vehicle GetVehicleDetails()
+    {
+        System.Console.Write("Ingrese la placa del vehículo: ");
+        string placa = System.Console.ReadLine();
+        System.Console.Write("Ingrese la marca del vehículo: ");
+        string marca = System.Console.ReadLine();
+        System.Console.Write("Ingrese el modelo del vehículo: ");
+        string modelo = System.Console.ReadLine();
+
+        int año = GetIntInput("Ingrese el año del vehículo: ");
+        decimal precio = GetDecimalInput("Ingrese el precio del vehículo: ");
+
+        return new Vehicle(placa, marca, modelo, año, precio);
+    }
+}
