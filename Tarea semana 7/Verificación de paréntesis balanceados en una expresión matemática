@@ -8,3 +8,11 @@ bool balanceada = EstaBalanceada(expresion);
 if (balanceada)
     Console.WriteLine("Fórmula balanceada.");
 else
+Console.WriteLine("Fórmula desbalanceada.");
+
+// Función que revisa si la expresión tiene los símbolos bien emparejados
+bool EstaBalanceada(string expresion)
+{
+    // Usamos un arreglo para simular una pila donde vamos a guardar los símbolos de apertura
+    char[] pila = new char[expresion.Length];
+    int tope = -1; // Aquí guardamos la posición del último símbolo agregado, -1 significa que está vacía
