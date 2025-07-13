@@ -1,0 +1,10 @@
+// Esta es la expresión que vamos a revisar para ver si los símbolos están bien balanceados
+string expresion = "{7 + (8 * 5) - [(9 - 7) + (4 + 1)]}";
+
+// Llamamos a la función que chequea si todo está en orden con los paréntesis, llaves y corchetes
+bool balanceada = EstaBalanceada(expresion);
+
+// Mostramos el resultado por pantalla
+if (balanceada)
+    Console.WriteLine("Fórmula balanceada.");
+else
