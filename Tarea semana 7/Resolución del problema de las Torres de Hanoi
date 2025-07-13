@@ -13,3 +13,10 @@ void MostrarTorres()
     System.Console.WriteLine("C: " + string.Join(", ", torreC));
     System.Console.WriteLine("-----------------------------");
 }
+// Función que mueve un disco de una torre a otra y muestra el movimiento
+void MoverDisco(System.Collections.Generic.Stack<int> origen, System.Collections.Generic.Stack<int> destino, char nombreOrigen, char nombreDestino)
+{
+    // Sacamos el disco superior de la torre origen
+    int disco = origen.Pop();
+    // Lo colocamos en la cima de la torre destino
+    destino.Push(disco);
