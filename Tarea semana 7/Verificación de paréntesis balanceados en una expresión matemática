@@ -16,3 +16,17 @@ bool EstaBalanceada(string expresion)
     // Usamos un arreglo para simular una pila donde vamos a guardar los símbolos de apertura
     char[] pila = new char[expresion.Length];
     int tope = -1; // Aquí guardamos la posición del último símbolo agregado, -1 significa que está vacía
+// Recorremos cada carácter de la expresión uno por uno
+    for (int i = 0; i < expresion.Length; i++)
+    {
+        char c = expresion[i];
+
+        // Si es un símbolo que abre algo, lo guardamos en la pila
+        if (c == '(' || c == '{' || c == '[')
+        {
+            tope++;          // Subimos el tope porque agregamos un elemento
+            pila[tope] = c;  // Guardamos el símbolo
+        }
+        // Si es un símbolo de cierre, tenemos que ver si coincide con el último que abrimos
+        else if (c == ')' || c == '}' || c == ']')
+        {
