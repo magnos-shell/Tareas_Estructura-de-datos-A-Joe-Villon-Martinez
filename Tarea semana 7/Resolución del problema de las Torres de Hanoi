@@ -1,0 +1,15 @@
+// Definimos las tres pilas que representan las torres A, B y C
+System.Collections.Generic.Stack<int> torreA = new System.Collections.Generic.Stack<int>();
+System.Collections.Generic.Stack<int> torreB = new System.Collections.Generic.Stack<int>();
+System.Collections.Generic.Stack<int> torreC = new System.Collections.Generic.Stack<int>();
+
+// Función para mostrar el estado actual de las tres torres
+void MostrarTorres()
+{
+    System.Console.WriteLine("Estado actual de las torres:");
+    // Imprimimos los discos en cada torre (de arriba hacia abajo)
+    System.Console.WriteLine("A: " + string.Join(", ", torreA));
+    System.Console.WriteLine("B: " + string.Join(", ", torreB));
+    System.Console.WriteLine("C: " + string.Join(", ", torreC));
+    System.Console.WriteLine("-----------------------------");
+}
