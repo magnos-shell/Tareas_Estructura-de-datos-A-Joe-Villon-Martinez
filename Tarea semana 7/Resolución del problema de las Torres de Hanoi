@@ -13,6 +13,7 @@ void MostrarTorres()
     System.Console.WriteLine("C: " + string.Join(", ", torreC));
     System.Console.WriteLine("-----------------------------");
 }
+
 // Función que mueve un disco de una torre a otra y muestra el movimiento
 void MoverDisco(System.Collections.Generic.Stack<int> origen, System.Collections.Generic.Stack<int> destino, char nombreOrigen, char nombreDestino)
 {
@@ -20,7 +21,8 @@ void MoverDisco(System.Collections.Generic.Stack<int> origen, System.Collections
     int disco = origen.Pop();
     // Lo colocamos en la cima de la torre destino
     destino.Push(disco);
- // Informamos al usuario qué movimiento se hizo
+
+    // Informamos al usuario qué movimiento se hizo
     System.Console.WriteLine($"Mover disco {disco} de {nombreOrigen} a {nombreDestino}");
     // Mostramos el estado actualizado de las torres
     MostrarTorres();
@@ -38,3 +40,36 @@ void Hanoi(int n, System.Collections.Generic.Stack<int> origen, System.Collectio
     {
         // Paso 1: Mover n-1 discos de la torre origen a la auxiliar
         Hanoi(n - 1, origen, auxiliar, destino, nombreOrigen, nombreAuxiliar, nombreDestino);
+
+        // Paso 2: Mover el disco más grande (el n-ésimo) de origen a destino
+        MoverDisco(origen, destino, nombreOrigen, nombreDestino);
+
+        // Paso 3: Mover los n-1 discos de la torre auxiliar a la destino
+        Hanoi(n - 1, auxiliar, destino, origen, nombreAuxiliar, nombreDestino, nombreOrigen);
+    }
+}
+
+// Pedimos al usuario que ingrese la cantidad de discos
+System.Console.Write("Ingrese el número de discos: ");
+if (!int.TryParse(System.Console.ReadLine(), out int n) || n <= 0)
+{
+    // Validamos que el número sea válido y positivo
+    System.Console.WriteLine("Número inválido de discos.");
+    return; // Terminamos la ejecución si la entrada no es válida
+}
+
+// Inicializamos la torre A con los discos, el disco más grande abajo (n) y el más pequeño arriba (1)
+for (int i = n; i >= 1; i--)
+{
+    torreA.Push(i);
+}
+
+// Mostramos el estado inicial de las torres antes de comenzar
+System.Console.WriteLine("Estado inicial:");
+MostrarTorres();
+
+// Ejecutamos la función recursiva para resolver las Torres de Hanoi
+Hanoi(n, torreA, torreC, torreB, 'A', 'C', 'B');
+
+// Mensaje final cuando se completa la solución
+System.Console.WriteLine("¡Torres de Hanoi resueltas!");
