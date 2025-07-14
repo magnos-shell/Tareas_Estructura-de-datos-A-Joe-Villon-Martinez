@@ -8,7 +8,7 @@ bool balanceada = EstaBalanceada(expresion);
 if (balanceada)
     Console.WriteLine("Fórmula balanceada.");
 else
-Console.WriteLine("Fórmula desbalanceada.");
+    Console.WriteLine("Fórmula desbalanceada.");
 
 // Función que revisa si la expresión tiene los símbolos bien emparejados
 bool EstaBalanceada(string expresion)
@@ -16,7 +16,8 @@ bool EstaBalanceada(string expresion)
     // Usamos un arreglo para simular una pila donde vamos a guardar los símbolos de apertura
     char[] pila = new char[expresion.Length];
     int tope = -1; // Aquí guardamos la posición del último símbolo agregado, -1 significa que está vacía
-// Recorremos cada carácter de la expresión uno por uno
+
+    // Recorremos cada carácter de la expresión uno por uno
     for (int i = 0; i < expresion.Length; i++)
     {
         char c = expresion[i];
@@ -30,3 +31,28 @@ bool EstaBalanceada(string expresion)
         // Si es un símbolo de cierre, tenemos que ver si coincide con el último que abrimos
         else if (c == ')' || c == '}' || c == ']')
         {
+            // Si la pila está vacía, significa que hay un cierre sin apertura, así que no está balanceado
+            if (tope == -1)
+                return false;
+
+            // Sacamos el último símbolo de apertura que pusimos en la pila
+            char apertura = pila[tope];
+            tope--; // Bajamos el tope porque ya sacamos ese elemento
+
+            // Comprobamos que el símbolo de apertura y cierre coincidan
+            if (!EsPar(apertura, c))
+                return false; // Si no coinciden, entonces está mal
+        }
+    }
+
+    // Si al final la pila está vacía, quiere decir que todo está balanceado
+    return tope == -1;
+}
+
+// Esta función solo compara si el par de símbolos es correcto (por ejemplo, '(' con ')')
+bool EsPar(char apertura, char cierre)
+{
+    return (apertura == '(' && cierre == ')') ||
+           (apertura == '{' && cierre == '}') ||
+           (apertura == '[' && cierre == ']');
+}
