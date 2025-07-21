@@ -13,7 +13,8 @@ class ColaPersonalizada
     private int frente;          // Índice del primer elemento en cola
     private int fin;             // Índice del último elemento en cola
     private int cantidad;        // Cuántos elementos hay actualmente
- // Constructor para inicializar la cola con un tamaño fijo
+
+    // Constructor para inicializar la cola con un tamaño fijo
     public ColaPersonalizada(int tamaño)
     {
         capacidad = tamaño;
@@ -60,5 +61,54 @@ class ColaPersonalizada
             resultado[i] = elementos[indice];       // Copiamos cada persona al arreglo resultado
         }
         return resultado;
+    }
+}
+
+// Clase principal donde se ejecuta el programa
+class Program
+{
+    static void Main()
+    {
+        ColaPersonalizada cola = new ColaPersonalizada(30);  // Creamos la cola para 30 personas
+        int asientosDisponibles = 30;                        // Contador de asientos disponibles
+
+        // Ciclo para que la gente ingrese y se les asigne asiento hasta llenar los 30
+        while (asientosDisponibles > 0)
+        {
+            System.Console.Write("Ingrese el nombre del visitante: ");  // Pedimos el nombre
+            string nombre = System.Console.ReadLine();                  // Leemos el nombre
+
+            Persona p = new Persona();             // Creamos objeto persona nuevo
+            p.Nombre = nombre;                     // Asignamos el nombre ingresado
+            p.NumeroAsiento = 31 - asientosDisponibles;   // Asignamos asiento en orden
+
+            // Agregamos la persona a la cola, chequeando si hay espacio
+            if (cola.Encolar(p))
+            {
+                System.Console.WriteLine("Asiento asignado: " + p.NumeroAsiento + "\n");
+                asientosDisponibles--;   // Reducimos el contador de asientos libres
+            }
+            else
+            {
+                System.Console.WriteLine("La cola está llena, no se puede asignar más asientos.");
+                break;                   // Si la cola está llena, salimos del ciclo
+            }
+        }
+
+        // Mostramos la lista completa de personas en la cola con su asiento asignado
+        System.Console.WriteLine("\n--- Estado de la cola ---");
+        Persona[] personas = cola.ObtenerElementos();
+        for (int i = 0; i < personas.Length; i++)
+        {
+            System.Console.WriteLine("Nombre: " + personas[i].Nombre + ", Asiento: " + personas[i].NumeroAsiento);
+        }
+
+        // Simulamos que las personas suben a la atracción una por una y en orden
+        System.Console.WriteLine("\n--- Subiendo a la atracción en orden ---");
+        while (cola.Cantidad() > 0)
+        {
+            Persona p = cola.Desencolar();
+            System.Console.WriteLine(p.Nombre + " ocupa el asiento " + p.NumeroAsiento);
+        }
     }
 }
