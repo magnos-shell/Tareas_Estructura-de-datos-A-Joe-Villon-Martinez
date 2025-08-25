@@ -302,3 +302,42 @@ public class SistemaVacunacion
                 writer.WriteLine(new string('-', 40));
                 writer.WriteLine();
             }
+ }
+        
+        Console.WriteLine($"Reporte guardado en: {nombreArchivo}");
+    }
+}
+
+// Clase principal del programa
+class Program
+{
+    // Método principal de entrada del programa
+    static void Main(string[] args)
+    {
+        try
+        {
+            // Mostrar mensaje de inicio
+            Console.WriteLine("Iniciando Sistema de Vacunación COVID-19...");
+            Console.WriteLine();
+            
+            // Crear una instancia del sistema de vacunación
+            var sistema = new SistemaVacunacion();
+            
+            // Generar y mostrar el reporte completo en consola
+            sistema.GenerarReporte();
+            
+            // Guardar el reporte en un archivo de texto
+            sistema.GuardarReporteEnArchivo();
+            
+            // Esperar input del usuario antes de cerrar
+            Console.WriteLine("Presione cualquier tecla para salir...");
+            Console.ReadKey();
+        }
+        catch (Exception ex)
+        {
+            // Manejar cualquier error que pueda ocurrir
+            Console.WriteLine($"Error en el sistema: {ex.Message}");
+            Console.ReadKey();
+        }
+    }
+}
