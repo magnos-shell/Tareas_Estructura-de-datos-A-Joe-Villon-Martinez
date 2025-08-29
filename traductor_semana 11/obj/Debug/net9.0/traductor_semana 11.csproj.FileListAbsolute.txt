@@ -1,0 +1,15 @@
+c:\Users\Gateway\Desktop\tarea est de datos\Tareas_Estructura-de-datos-A-Joe-Villon-Martinez\traductor_semana 11\bin\Debug\net9.0\traductor_semana 11.exe
+c:\Users\Gateway\Desktop\tarea est de datos\Tareas_Estructura-de-datos-A-Joe-Villon-Martinez\traductor_semana 11\bin\Debug\net9.0\traductor_semana 11.deps.json
+c:\Users\Gateway\Desktop\tarea est de datos\Tareas_Estructura-de-datos-A-Joe-Villon-Martinez\traductor_semana 11\bin\Debug\net9.0\traductor_semana 11.runtimeconfig.json
+c:\Users\Gateway\Desktop\tarea est de datos\Tareas_Estructura-de-datos-A-Joe-Villon-Martinez\traductor_semana 11\bin\Debug\net9.0\traductor_semana 11.dll
+c:\Users\Gateway\Desktop\tarea est de datos\Tareas_Estructura-de-datos-A-Joe-Villon-Martinez\traductor_semana 11\bin\Debug\net9.0\traductor_semana 11.pdb
+c:\Users\Gateway\Desktop\tarea est de datos\Tareas_Estructura-de-datos-A-Joe-Villon-Martinez\traductor_semana 11\obj\Debug\net9.0\traductor_semana 11.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\Gateway\Desktop\tarea est de datos\Tareas_Estructura-de-datos-A-Joe-Villon-Martinez\traductor_semana 11\obj\Debug\net9.0\traductor_semana 11.AssemblyInfoInputs.cache
+c:\Users\Gateway\Desktop\tarea est de datos\Tareas_Estructura-de-datos-A-Joe-Villon-Martinez\traductor_semana 11\obj\Debug\net9.0\traductor_semana 11.AssemblyInfo.cs
+c:\Users\Gateway\Desktop\tarea est de datos\Tareas_Estructura-de-datos-A-Joe-Villon-Martinez\traductor_semana 11\obj\Debug\net9.0\traductor_semana 11.csproj.CoreCompileInputs.cache
+c:\Users\Gateway\Desktop\tarea est de datos\Tareas_Estructura-de-datos-A-Joe-Villon-Martinez\traductor_semana 11\obj\Debug\net9.0\traductor_semana 11.sourcelink.json
+c:\Users\Gateway\Desktop\tarea est de datos\Tareas_Estructura-de-datos-A-Joe-Villon-Martinez\traductor_semana 11\obj\Debug\net9.0\traductor_semana 11.dll
+c:\Users\Gateway\Desktop\tarea est de datos\Tareas_Estructura-de-datos-A-Joe-Villon-Martinez\traductor_semana 11\obj\Debug\net9.0\refint\traductor_semana 11.dll
+c:\Users\Gateway\Desktop\tarea est de datos\Tareas_Estructura-de-datos-A-Joe-Villon-Martinez\traductor_semana 11\obj\Debug\net9.0\traductor_semana 11.pdb
+c:\Users\Gateway\Desktop\tarea est de datos\Tareas_Estructura-de-datos-A-Joe-Villon-Martinez\traductor_semana 11\obj\Debug\net9.0\traductor_semana 11.genruntimeconfig.cache
+c:\Users\Gateway\Desktop\tarea est de datos\Tareas_Estructura-de-datos-A-Joe-Villon-Martinez\traductor_semana 11\obj\Debug\net9.0\ref\traductor_semana 11.dll
