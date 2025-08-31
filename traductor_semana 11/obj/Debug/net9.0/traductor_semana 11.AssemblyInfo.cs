@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("traductor_semana 11")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8152d264b54fec93bd32e247f01ffeb6db9eaef7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d1c39b8cef270a32acbbd3ece699ede688b23b08")]
 [assembly: System.Reflection.AssemblyProductAttribute("traductor_semana 11")]
 [assembly: System.Reflection.AssemblyTitleAttribute("traductor_semana 11")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
