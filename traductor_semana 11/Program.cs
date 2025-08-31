@@ -191,3 +191,46 @@
         }
         catch
         {
+// Si Clear() no funciona, simplemente agregar líneas vacías
+            for (int i = 0; i < 10; i++)
+            {
+                System.Console.WriteLine();
+            }
+        }
+    }
+
+    static void AgregarPalabra()
+    {
+        LimpiarPantalla();
+        System.Console.WriteLine("=== AGREGAR PALABRAS AL DICCIONARIO ===");
+        
+        System.Console.Write("Ingrese la palabra en inglés: ");
+        string english = System.Console.ReadLine();
+        
+        System.Console.Write("Ingrese la palabra en español: ");
+        string spanish = System.Console.ReadLine();
+
+        if (string.IsNullOrWhiteSpace(english) || string.IsNullOrWhiteSpace(spanish))
+        {
+            System.Console.WriteLine("Error: Debe ingresar ambas palabras.");
+            System.Console.WriteLine("Presione cualquier tecla para continuar...");
+            System.Console.ReadKey();
+            return;
+        }
+
+        // Convertir a minúsculas para almacenar
+        english = english.ToLower().Trim();
+        spanish = spanish.ToLower().Trim();
+
+        // Agregar a ambos diccionarios
+        englishToSpanish[english] = spanish;
+        spanishToEnglish[spanish] = english;
+
+        System.Console.WriteLine();
+        System.Console.WriteLine("Palabras agregadas exitosamente:");
+        System.Console.WriteLine("  " + english + " ↔ " + spanish);
+        System.Console.WriteLine();
+        System.Console.WriteLine("Presione cualquier tecla para continuar...");
+        System.Console.ReadKey();
+    }
+}
