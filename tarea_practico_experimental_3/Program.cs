@@ -1,4 +1,4 @@
-﻿// Clase para representar un Jugador
+﻿// Clase para representar un Jugador de futbol
 public class Jugador
 {
     public int Id { get; set; }
