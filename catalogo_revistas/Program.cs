@@ -262,3 +262,72 @@ public class CatalogoRevistas
     /// </summary>
     public static void CompararAlgoritmos()
     {
+Console.WriteLine("\n--- COMPARACION DE ALGORITMOS ---");
+        Console.Write("Ingrese el título a buscar: ");
+        string titulo = Console.ReadLine();
+
+        if (string.IsNullOrEmpty(titulo))
+        {
+            Console.WriteLine("Error: Debe ingresar un título.");
+            return;
+        }
+
+        int numeroPruebas = 10000;
+        
+        // Probar búsqueda iterativa
+        DateTime inicioIterativo = DateTime.Now;
+        bool resultadoIterativo = false;
+        for (int i = 0; i < numeroPruebas; i++)
+        {
+            resultadoIterativo = BusquedaIterativa(titulo);
+        }
+        DateTime finIterativo = DateTime.Now;
+        double tiempoIterativo = (finIterativo - inicioIterativo).TotalMilliseconds / numeroPruebas;
+
+        // Probar búsqueda recursiva
+        DateTime inicioRecursivo = DateTime.Now;
+        bool resultadoRecursivo = false;
+        for (int i = 0; i < numeroPruebas; i++)
+        {
+            resultadoRecursivo = BusquedaRecursiva(titulo);
+        }
+        DateTime finRecursivo = DateTime.Now;
+        double tiempoRecursivo = (finRecursivo - inicioRecursivo).TotalMilliseconds / numeroPruebas;
+
+        // Mostrar resultados
+        Console.WriteLine("\n--- RESULTADOS DE COMPARACION ---");
+        Console.WriteLine("Título buscado: " + titulo);
+        Console.WriteLine("Número de pruebas: " + numeroPruebas);
+        Console.WriteLine("\nMétodo Iterativo:");
+        Console.WriteLine("  Resultado: " + (resultadoIterativo ? "ENCONTRADO" : "NO ENCONTRADO"));
+        Console.WriteLine("  Tiempo promedio: " + tiempoIterativo.ToString("F6") + " ms");
+        Console.WriteLine("\nMétodo Recursivo:");
+        Console.WriteLine("  Resultado: " + (resultadoRecursivo ? "ENCONTRADO" : "NO ENCONTRADO"));
+        Console.WriteLine("  Tiempo promedio: " + tiempoRecursivo.ToString("F6") + " ms");
+
+        if (tiempoIterativo < tiempoRecursivo)
+        {
+            double diferencia = ((tiempoRecursivo - tiempoIterativo) / tiempoIterativo) * 100;
+            Console.WriteLine("\nConclusión: El método ITERATIVO es " + diferencia.ToString("F1") + "% más rápido");
+        }
+        else if (tiempoRecursivo < tiempoIterativo)
+        {
+            double diferencia = ((tiempoIterativo - tiempoRecursivo) / tiempoRecursivo) * 100;
+            Console.WriteLine("\nConclusión: El método RECURSIVO es " + diferencia.ToString("F1") + "% más rápido");
+        }
+        else
+        {
+            Console.WriteLine("\nConclusión: Ambos métodos tienen rendimiento similar");
+        }
+    }
+
+    // ==========================================
+    // MÉTODO PRINCIPAL
+    // ==========================================
+    
+    /// <summary>
+    /// Método principal - punto de entrada del programa
+    /// Similar al ejemplo del factorial proporcionado
+    /// </summary>
+    public static void Main()
+    {
