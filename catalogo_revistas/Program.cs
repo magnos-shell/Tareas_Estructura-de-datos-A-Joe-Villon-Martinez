@@ -331,3 +331,54 @@ Console.WriteLine("\n--- COMPARACION DE ALGORITMOS ---");
     /// </summary>
     public static void Main()
     {
+// Inicializar catálogo
+        InicializarCatalogo();
+        
+        Console.WriteLine("===================================");
+        Console.WriteLine("  CATALOGO DE REVISTAS - v1.0");
+        Console.WriteLine("  Busqueda Recursiva e Iterativa");
+        Console.WriteLine("===================================");
+
+        bool continuar = true;
+        
+        while (continuar)
+        {
+            MostrarMenu();
+            Console.Write("Seleccione una opción: ");
+            string opcion = Console.ReadLine();
+
+            switch (opcion)
+            {
+                case "1":
+                    RealizarBusquedaIterativa();
+                    break;
+                case "2":
+                    RealizarBusquedaRecursiva();
+                    break;
+                case "3":
+                    MostrarCatalogo();
+                    break;
+                case "4":
+                    AgregarRevista();
+                    break;
+                case "5":
+                    CompararAlgoritmos();
+                    break;
+                case "0":
+                    continuar = false;
+                    Console.WriteLine("\nGracias por usar el Catálogo de Revistas!");
+                    break;
+                default:
+                    Console.WriteLine("\nError: Opción inválida. Seleccione una opción válida.");
+                    break;
+            }
+
+            if (continuar)
+            {
+                Console.WriteLine("\nPresione ENTER para continuar...");
+                Console.ReadLine();
+                Console.Clear();
+            }
+        }
+    }
+}
